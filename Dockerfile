@@ -19,7 +19,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.15.34.zip" -o "
 RUN curl -kLO https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/rosa-linux.tar.gz && \
     tar xzf rosa-linux.tar.gz && \
     mv rosa /usr/local/bin/rosa && \
-    chmod +x /usr/local/bin/rosa ##&& \
+    chmod +x /usr/local/bin/rosa && \
     rosa download oc && \
     tar xzf openshift-client-linux.tar.gz && \
     mv oc kubectl /usr/local/bin/ && \
