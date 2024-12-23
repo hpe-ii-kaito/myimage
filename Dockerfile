@@ -32,5 +32,5 @@ RUN curl -kLO https://mirror.openshift.com/pub/openshift-v4/clients/helm/latest/
     rm -rf helm-linux-amd64.tar.gz
 
 # Install Terraform
-RUN dnf install -y dnf-plugins-core && dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
+RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && \
     dnf -y install terraform
