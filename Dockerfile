@@ -20,14 +20,10 @@ RUN curl -kLO https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/
     tar xzf rosa-linux.tar.gz && \
     mv rosa /usr/local/bin/rosa && \
     chmod +x /usr/local/bin/rosa ##&& \
-#   rosa download oc && \
-#   tar xzf openshift-client-linux.tar.gz && \
-#   mv oc kubectl /usr/local/bin/ && \
-#   rm -rf rosa-linux.tar.gz openshift-client-linux.tar.gz
-
-# Install GitHub CLI package
-#RUN curl -L -o - https://github.com/cli/cli/releases/download/v2.40.1/gh_2.40.1_linux_amd64.tar.gz | tar xzf - -O gh_2.40.1_linux_amd64/bin/gh > /usr/local/bin/gh && \
-#    chmod 755 /usr/local/bin/gh
+    rosa download oc && \
+    tar xzf openshift-client-linux.tar.gz && \
+    mv oc kubectl /usr/local/bin/ && \
+    rm -rf rosa-linux.tar.gz openshift-client-linux.tar.gz
 
 # Install Helm package
 RUN curl -kLO https://mirror.openshift.com/pub/openshift-v4/clients/helm/latest/helm-linux-amd64.tar.gz && \
@@ -36,5 +32,5 @@ RUN curl -kLO https://mirror.openshift.com/pub/openshift-v4/clients/helm/latest/
     rm -rf helm-linux-amd64.tar.gz
 
 # Install Terraform
-RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
+RUN dnf install -y dnf-plugins-core && dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
     dnf -y install terraform
