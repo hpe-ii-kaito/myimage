@@ -11,8 +11,8 @@ RUN dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.rep
 
 # Install AWS CLI package
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.15.34.zip" -o "/root/awscliv2.zip" && \
-    unzip -d /root "/root/awscliv2.zip" && \
-    /root/aws/install && \
+    unzip ./awscliv2.zip && \
+    ./aws/install && \
     rm -rf awscliv2.zip aws/
 
 # Install ROSA CLI
@@ -23,7 +23,7 @@ RUN curl -kLO https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/
     rosa download oc && \
     tar xzf openshift-client-linux.tar.gz && \
     mv oc kubectl /usr/local/bin/ && \
-    rm -rf rosa-linux.tar.gz openshift-client-linux.tar.gz
+    rm -rf rosa-linux.tar.gz openshift-client-linux.tar.gz README.md
 
 # Install Helm package
 RUN curl -kLO https://mirror.openshift.com/pub/openshift-v4/clients/helm/latest/helm-linux-amd64.tar.gz && \
