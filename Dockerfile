@@ -10,13 +10,13 @@ RUN dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.rep
     dnf install -y gh --repo gh-cli
 
 # Install AWS CLI package
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.15.34.zip" -o "/root/awscliv2.zip" && \
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.15.34.zip" -o "awscliv2.zip" && \
     unzip ./awscliv2.zip && \
     ./aws/install && \
     rm -rf awscliv2.zip aws/
 
 # Install ROSA CLI
-RUN curl -kLO https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/rosa-linux.tar.gz && \
+RUN curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/rosa-linux.tar.gz && \
     tar xzf rosa-linux.tar.gz && \
     mv rosa /usr/local/bin/rosa && \
     chmod +x /usr/local/bin/rosa && \
@@ -26,7 +26,7 @@ RUN curl -kLO https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/
     rm -rf rosa-linux.tar.gz openshift-client-linux.tar.gz README.md
 
 # Install Helm package
-RUN curl -kLO https://mirror.openshift.com/pub/openshift-v4/clients/helm/latest/helm-linux-amd64.tar.gz && \
+RUN curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/helm/latest/helm-linux-amd64.tar.gz && \
     tar xzf helm-linux-amd64.tar.gz && \
     mv helm-linux-amd64 /usr/local/bin/helm && \
     rm -rf helm-linux-amd64.tar.gz
